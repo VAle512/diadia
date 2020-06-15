@@ -9,7 +9,6 @@ import org.junit.Test;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
@@ -23,7 +22,7 @@ public class ComandoPrendiTest {
 	public void setUp() throws Exception {
 		this.comandoPrendi = new ComandoPrendi();
 		this.comandoPrendi.setIO(new IOConsole());
-		Labirinto labirinto = new LabirintoBuilder()
+		Labirinto labirinto = Labirinto.newBuilder()
 				.addStanzaIniziale("iniziale")
 				.getLabirinto();
 		this.partita = new Partita(labirinto);

@@ -1,6 +1,8 @@
 package it.uniroma3.diadia.ambienti;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +13,7 @@ public class StanzaBuiaTest {
 
 	private static final String ATTREZZO_LUCE_TEST = "attrezzoLuceTest";
 	private StanzaBuia stanzaBuia;
-
+	
 	@Before
 	public void setUp() {
 		this.stanzaBuia = new StanzaBuia("StanzaBuia", ATTREZZO_LUCE_TEST);

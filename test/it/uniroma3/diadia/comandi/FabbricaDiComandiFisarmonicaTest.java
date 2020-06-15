@@ -1,13 +1,11 @@
 package it.uniroma3.diadia.comandi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.diadia.IOConsole;
-import it.uniroma3.diadia.comandi.Comando;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
 public class FabbricaDiComandiFisarmonicaTest {
 	
@@ -54,7 +52,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 	}	
 
 	private void testaNomeParametroComando(String nomeComando, String comandoAtteso, String parametroDaFornire) {
-		Comando comando = this.fabbricaDiComandi.costruisciComando(nomeComando, new IOConsole());
+		AbstractComando comando = this.fabbricaDiComandi.costruisciComando(nomeComando, new IOConsole());
 		if (parametroDaFornire != null) 
 			comando.setParametro(parametroDaFornire);
 		assertEquals(comandoAtteso, comando.getNome());

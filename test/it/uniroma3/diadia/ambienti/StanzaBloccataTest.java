@@ -1,6 +1,7 @@
 package it.uniroma3.diadia.ambienti;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,8 +12,8 @@ public class StanzaBloccataTest {
 
 	private static final String STANZA_ADIACENTE_LIBERA = "stanzaAdiacenteLibera";
 	private static final String STANZA_ADIACENTE_BLOCCATA = "stanzaAdiacenteBloccata";
-	private static final String DIREZIONE_BLOCCATA = "DirBloccata";
-	private static final String DIREZIONE_LIBERA = "DirLibera";
+	private static final Direzione DIREZIONE_BLOCCATA = Direzione.NORD;
+	private static final Direzione DIREZIONE_LIBERA = Direzione.SUD;
 	private static final String CHIAVE_TEST = "chiaveTest";
 	private static final String STANZA_BLOCCATA = "StanzaBloccata";
 	

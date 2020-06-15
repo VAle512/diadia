@@ -70,4 +70,8 @@ public class Attrezzo implements Comparable<Attrezzo>  {
 		return this.getNome().hashCode() + this.getPeso();
 	}
 
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
+
 }

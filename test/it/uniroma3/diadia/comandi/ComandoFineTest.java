@@ -1,21 +1,21 @@
 package it.uniroma3.diadia.comandi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import it.uniroma3.diadia.DiaDia;
 import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.fixture.Fixture;
 
 public class ComandoFineTest {
 
 	@Test
-	public void testPartitaConComandoFine() {
+	public void testPartitaConComandoFine() throws Exception {
 		String[] righeDaLeggere = {"fine"};
-		Labirinto labirinto = new LabirintoBuilder()
+		Labirinto labirinto = Labirinto.newBuilder()
 				.addStanzaIniziale("iniziale")
 				.getLabirinto();
 		IOSimulator io = Fixture.creaSimulazionePartitaEGioca(labirinto, righeDaLeggere);

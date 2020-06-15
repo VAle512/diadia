@@ -1,10 +1,12 @@
 package it.uniroma3.diadia;
 
+
+import java.util.Scanner;
+
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
-import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.AbstractComando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -51,10 +53,11 @@ public class DiaDia {
 	 * Processa una istruzione 
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
+	 * @throws Exception 
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica();
+		AbstractComando comandoDaEseguire;
+		FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva();
 		comandoDaEseguire = factory.costruisciComando(istruzione,this.io);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta())
@@ -68,13 +71,20 @@ public class DiaDia {
 	}   
 	
 	public static void main(String[] argc) {
-		IO ioConsole = new IOConsole();
-		Labirinto labirinto = new LabirintoBuilder()
+		Scanner scannerDiLinee = new Scanner(System.in);
+		IO ioConsole = new IOConsole(scannerDiLinee);
+		Labirinto labirinto = Labirinto.newBuilder()
 				.addStanzaIniziale("LabCampusOne")
 				.addStanzaVincente("Biblioteca")
 				.addAdiacenza("LabCampusOne","Biblioteca","ovest")
 				.getLabirinto();
 		DiaDia gioco = new DiaDia(ioConsole, labirinto);
-		gioco.gioca();
+		try {
+			gioco.gioca();
+		} catch (Exception e) {
+			ioConsole.mostraMessaggio("Errore inaspettato!");
+		} finally {
+			scannerDiLinee.close();
+		}
 	}
 }

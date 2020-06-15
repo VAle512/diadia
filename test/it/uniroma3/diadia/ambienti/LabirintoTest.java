@@ -13,7 +13,7 @@ public class LabirintoTest {
 	
 	@Before
 	public void setUp() {
-		this.labirinto = new LabirintoBuilder()
+		this.labirinto = Labirinto.newBuilder()
 				.addStanzaIniziale(INIZIALE)
 				.addStanzaVincente(VINCENTE)
 				.getLabirinto();

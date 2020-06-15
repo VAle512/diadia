@@ -10,9 +10,11 @@ import it.uniroma3.diadia.IO;
 public interface FabbricaDiComandi {
 	
 	/**
-	 * Costruisce il comando con una stringa istruzione in input, che contiene il comando ed un eventuale parametro.
+	 * Costruisce il comando con una stringa istruzione in input,
+	 * che contiene il comando ed un eventuale parametro.
 	 * @param istruzione
 	 * @return
+	 * @throws Exception 
 	 */
-	public Comando costruisciComando(String istruzione, IO io);
+	public AbstractComando costruisciComando(String istruzione, IO io);
 }
