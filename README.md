@@ -17,6 +17,8 @@ Il repository è organizzato in diversi branch, uno per ogni homework del corso.
 Sul branch **master** è presente la versione iniziale di diadia così com'è presente sul sito del corso,
 con ancora tutti gli errori iniziali.
 
-Per scaricare la versione andare sul relativo branch e poi cliccare sul pulsante *Clone or Download*.
+Per scaricare la versione desiderata andare sul relativo branch e poi cliccare sul pulsante *Clone or Download*.
 
 È possibile cambiare branch localmente con il comando: `git checkout nome_del_branch`.
+
+Per controllare la traccia di ogni singolo homework andare nella cartella [homework](homework) (disponibile in ogni branch).
