@@ -11,10 +11,6 @@ public class StanzaBuiaTest {
 
 	private static final String ATTREZZO_LUCE_TEST = "attrezzoLuceTest";
 	private StanzaBuia stanzaBuia;
-	
-	private static final String DESCRIZIONE_STANZA = "StanzaBuia\n" + 
-			"Uscite: \n" + 
-			"Attrezzi nella stanza: attrezzoLuceTest (1kg) ";
 
 	@Before
 	public void setUp() {
@@ -29,7 +25,7 @@ public class StanzaBuiaTest {
 	@Test
 	public void testGetDescrizioneConLuce() {
 		Fixture.creaAttrezzoEAggiungiAStanza(this.stanzaBuia, ATTREZZO_LUCE_TEST, 1);
-		assertEquals(DESCRIZIONE_STANZA, this.stanzaBuia.getDescrizione());
+		assertNotEquals(StanzaBuia.DESCRIZIONE_STANZA_BUIA, this.stanzaBuia.getDescrizione());
 	}
 	
 	@Test

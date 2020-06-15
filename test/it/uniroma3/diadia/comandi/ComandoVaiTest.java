@@ -10,26 +10,28 @@ import it.uniroma3.diadia.DiaDia;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.fixture.Fixture;
 
 public class ComandoVaiTest {
-	
 	
 	private static final String NOME_STANZA_PARTENZA = "Partenza";
 	private static final String NORD = "nord";
 	private Partita partita;
 	private Comando comandoVai;
 	private Stanza partenza;
-	
 
 	@Before
 	public void setUp() throws Exception {
 		this.comandoVai = new ComandoVai();
 		this.comandoVai.setIO(new IOConsole());
-		this.partita = new Partita();
-		this.partenza = new Stanza(NOME_STANZA_PARTENZA);
-		this.partita.setStanzaCorrente(this.partenza);
+		Labirinto labirinto = new LabirintoBuilder()
+				.addStanzaIniziale(NOME_STANZA_PARTENZA)
+				.getLabirinto();
+		this.partita = new Partita(labirinto);
+		this.partenza = this.partita.getStanzaCorrente();
 	}
 
 	@Test
@@ -60,7 +62,12 @@ public class ComandoVaiTest {
 	@Test
 	public void testPartitaConComandoVai() {
 		String[] comandiDaEseguire = {"vai sud","fine"};
-		IOSimulator io = Fixture.creaSimulazionePartitaEGioca(comandiDaEseguire);
+		Labirinto labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("iniziale")
+				.addStanza("Aula N10")
+				.addAdiacenza("iniziale", "Aula N10", "sud")
+				.getLabirinto();
+		IOSimulator io = Fixture.creaSimulazionePartitaEGioca(labirinto, comandiDaEseguire);
 		assertTrue(io.hasNextMessaggio());
 		assertEquals(DiaDia.MESSAGGIO_BENVENUTO, io.nextMessaggio());
 		assertTrue(io.hasNextMessaggio());

@@ -25,7 +25,7 @@ public class Giocatore {
 	
 	@Override
 	public String toString() {
-		return this.cfu + this.borsa.toString();
+		return "CFU: " + this.cfu + "\nBorsa: " + this.borsa.toString();
 	}
 	
 }

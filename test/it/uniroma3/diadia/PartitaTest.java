@@ -8,16 +8,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 
 public class PartitaTest {
 	
-	private Partita partita; 
+	private Partita partita;
+	private Labirinto labirinto;
 	
 	@Before
 	public void setUp() {
-		this.partita = new Partita();
+		this.labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("iniziale")
+				.addStanzaVincente("vincente")
+				.getLabirinto();
+		this.partita = new Partita(this.labirinto);
 	}
 	
 	@Test
